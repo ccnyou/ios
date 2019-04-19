@@ -20,7 +20,8 @@ import UIKit
     //MARK: FMDatabaseQueue
     @objc class var sharedDatabase: FMDatabaseQueue {
        struct Static {
-        static let sharedDatabase: FMDatabaseQueue = FMDatabaseQueue(path:((UtilsUrls.getOwnCloudFilePath()).appending("DB.sqlite")), flags: SQLITE_OPEN_CREATE|SQLITE_OPEN_READWRITE|SQLITE_OPEN_FILEPROTECTION_NONE)
+        static let ownCloudFilePath = UtilsUrls.getOwnCloudFilePath();
+        static let sharedDatabase: FMDatabaseQueue = FMDatabaseQueue(path:(ownCloudFilePath?.appending("DB.sqlite")), flags: SQLITE_OPEN_CREATE|SQLITE_OPEN_READWRITE|SQLITE_OPEN_FILEPROTECTION_NONE)
         }
 
         return Static.sharedDatabase
